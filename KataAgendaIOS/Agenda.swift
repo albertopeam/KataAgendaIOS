@@ -11,9 +11,11 @@ import Foundation
 class Agenda {
     
     private let defaults:UserDefaults
+    private let apiClient:ApiClient
     
-    init(defaults:UserDefaults = UserDefaults()) {
+    init(defaults:UserDefaults = UserDefaults(), apiClient:ApiClient = ApiClient()) {
         self.defaults = defaults
+        self.apiClient = apiClient
     }
     
     func add(contact: Contact) -> Contact {
@@ -31,7 +33,6 @@ class Agenda {
         var contacts = [Contact]()
         for key in keys {
             if key.contains("contact:"){
-                //let realKey = String(key.split(separator: ":")[1])
                 let contact = map(id: key)
                 contacts.append(contact!)
             }
@@ -55,7 +56,12 @@ class Agenda {
     //spec: sync backend, remove local & replace
     //mock: meter api client mock
     func sync(){
-        
+        apiClient.sync { contacts in
+            self.deleteAll()
+            contacts.forEach({ (contact) in
+                _ = self.add(contact: contact)
+            })
+        }
     }
     
     private func map(id:String) -> Contact? {

@@ -12,11 +12,13 @@ import XCTest
 class AgendaTests: XCTestCase {
     
     private var sut:Agenda!
+    private var mockApiClient:MockApiClient!
     private var ID = "1"
     
     override func setUp() {
         super.setUp()
-        sut = Agenda()
+        mockApiClient = MockApiClient()
+        sut = Agenda(apiClient: mockApiClient)
         sut.deleteAll()
     }
     
@@ -85,6 +87,19 @@ class AgendaTests: XCTestCase {
         XCTAssertEqual(count, 0)
     }
     
+    //MARK: sync
+    
+    func test_given_one_contact_when_sync_then_match_removed_old_and_stored_new() {
+        let toDelete = defaultContactWithId(id: "128")
+        _ = sut.add(contact: toDelete)
+        sut.sync()
+        let deleted = sut.getById(id: toDelete.id)
+        let contacts = sut.getAll()
+        XCTAssertNil(deleted)
+        XCTAssertEqual(contacts.count, 1)
+        assertSync(contact: contacts[0])
+    }
+    
     // MARK: Private
     
     private func givenOneContact(contact:Contact) {
@@ -105,5 +120,23 @@ class AgendaTests: XCTestCase {
     
     private func defaultContactWithId(id:String) -> Contact {
         return Contact(id: id, name: "name", username: "username", address: Address(postalCode: "postalCode", streetName: "streetName"), company: Company(name: "name", phone: "phone"))
+    }
+    
+    private func assertSync(contact:Contact) {
+        XCTAssertEqual(contact.id, "100")
+        XCTAssertEqual(contact.name, "Alberto")
+        XCTAssertEqual(contact.username, "apeam")
+        XCTAssertEqual(contact.address.postalCode, "15172")
+        XCTAssertEqual(contact.address.streetName, "Rúa Lucín, n8 bajo c")
+        XCTAssertEqual(contact.company!.name, "Mobgen")
+        XCTAssertEqual(contact.company!.phone, "000-00-00-00")
+    }
+}
+
+private class MockApiClient: ApiClient {
+    override func sync(completion: @escaping (_ contacts:[Contact]) -> Void) {
+        var items = [Contact]()
+        items.append(Contact(id: "100", name: "Alberto", username: "apeam", address: Address(postalCode: "15172", streetName: "Rúa Lucín, n8 bajo c"), company: Company(name: "Mobgen", phone: "000-00-00-00")))
+        completion(items)
     }
 }
