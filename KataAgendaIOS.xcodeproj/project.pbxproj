@@ -12,7 +12,9 @@
 		C3BF92E32155469F00031DB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3BF92E12155469F00031DB5 /* Main.storyboard */; };
 		C3BF92E5215546A100031DB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3BF92E4215546A100031DB5 /* Assets.xcassets */; };
 		C3BF92E8215546A100031DB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3BF92E6215546A100031DB5 /* LaunchScreen.storyboard */; };
-		C3BF92F3215546A100031DB5 /* KataAgendaIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF92F2215546A100031DB5 /* KataAgendaIOSTests.swift */; };
+		C3BF92F3215546A100031DB5 /* AgendaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF92F2215546A100031DB5 /* AgendaTests.swift */; };
+		C3BF92FE2155472100031DB5 /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF92FD2155472100031DB5 /* Agenda.swift */; };
+		C3BF93022155479500031DB5 /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BF92FD2155472100031DB5 /* Agenda.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,8 +36,9 @@
 		C3BF92E7215546A100031DB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C3BF92E9215546A100031DB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3BF92EE215546A100031DB5 /* KataAgendaIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KataAgendaIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3BF92F2215546A100031DB5 /* KataAgendaIOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KataAgendaIOSTests.swift; sourceTree = "<group>"; };
+		C3BF92F2215546A100031DB5 /* AgendaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaTests.swift; sourceTree = "<group>"; };
 		C3BF92F4215546A100031DB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3BF92FD2155472100031DB5 /* Agenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,7 @@
 				C3BF92E4215546A100031DB5 /* Assets.xcassets */,
 				C3BF92E6215546A100031DB5 /* LaunchScreen.storyboard */,
 				C3BF92E9215546A100031DB5 /* Info.plist */,
+				C3BF92FD2155472100031DB5 /* Agenda.swift */,
 			);
 			path = KataAgendaIOS;
 			sourceTree = "<group>";
@@ -90,7 +94,7 @@
 		C3BF92F1215546A100031DB5 /* KataAgendaIOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				C3BF92F2215546A100031DB5 /* KataAgendaIOSTests.swift */,
+				C3BF92F2215546A100031DB5 /* AgendaTests.swift */,
 				C3BF92F4215546A100031DB5 /* Info.plist */,
 			);
 			path = KataAgendaIOSTests;
@@ -198,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3BF92E02155469F00031DB5 /* ViewController.swift in Sources */,
+				C3BF92FE2155472100031DB5 /* Agenda.swift in Sources */,
 				C3BF92DE2155469F00031DB5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,7 +211,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3BF92F3215546A100031DB5 /* KataAgendaIOSTests.swift in Sources */,
+				C3BF92F3215546A100031DB5 /* AgendaTests.swift in Sources */,
+				C3BF93022155479500031DB5 /* Agenda.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,8 +364,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EAL5PKWJ89;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = KataAgendaIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -367,6 +373,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.albertopeam.KataAgendaIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -376,8 +383,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EAL5PKWJ89;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = KataAgendaIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -385,6 +392,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.albertopeam.KataAgendaIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
